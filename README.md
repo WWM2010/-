@@ -2,10 +2,10 @@
 
 Welcome to the repository for my personal portfolio website!  
 This project showcases my skills, projects, and experiences in a clean and modern design.
-(THIS WAS MY FIRST EVER MADE WEBSITE!!!!!)
+(THIS WAS MY FIRST EVER MADE WEBSITE!!!!)
 
 ## ✨ Features
-- Responsive design for desktop and mobile devices
+- Responsive design for desktop,(I have some problems with mobile responsivness)
 - Interactive project gallery
 - About Me section with background and skills
 - Contact form for easy communication
@@ -22,4 +22,4 @@ To run this project locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/WWM2010/Portfolio-website-2025.git
-this is the link of the website: https://wwm2010.github.io/Portfolio-website-2025/main.html
+This is the link of the website: https://wwm2010.github.io/Portfolio-website-2025/main.html
