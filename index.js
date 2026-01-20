@@ -1,320 +1,227 @@
-// Cursor effect
-const circle = document.querySelector(".circle");
-let mouseX = 0, mouseY = 0, rafId = null;
-
-const mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
-const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-function onMouseMove(e) {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (rafId === null) rafId = requestAnimationFrame(animate);
-}
-
-function animate() {
-  if (!circle) return;
-  const offsetX = circle.offsetWidth / 2;
-  const offsetY = circle.offsetHeight / 2;
-  const targetX = mouseX - offsetX;
-  const targetY = mouseY - offsetY;
-
-  const currentTransform = circle.style.transform || 'translate(0px, 0px)';
-  const match = currentTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-  let currentX = 0, currentY = 0;
-  if (match) {
-    currentX = parseFloat(match[1]);
-    currentY = parseFloat(match[2]);
-  }
-
-  const newX = currentX + (targetX - currentX) * 0.12;
-  const newY = currentY + (targetY - currentY) * 0.12;
-
-  circle.style.transform = `translate(${newX}px, ${newY}px)`;
-  rafId = requestAnimationFrame(animate);
-}
-
-function startCursor() {
-  if (!circle) return;
-  window.addEventListener("mousemove", onMouseMove);
-}
-
-function stopCursor() {
-  window.removeEventListener("mousemove", onMouseMove);
-  if (rafId !== null) {
-    cancelAnimationFrame(rafId);
-    rafId = null;
-  }
-  if (circle) circle.style.transform = "";
-}
-
-function evaluateCursor() {
-  if (mqHover.matches && !mqReduce.matches) {
-    startCursor();
-  } else {
-    stopCursor();
-  }
-}
-
-evaluateCursor();
-mqHover.addEventListener('change', evaluateCursor);
-mqReduce.addEventListener('change', evaluateCursor);
-
-
-
-
-
-
-
-// Counting animation for stats
-function startCountingAnimation() {
-  const statNumbers = document.querySelectorAll('.stat-number');
-  
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-        const target = parseInt(entry.target.dataset.target);
-        let current = 0;
-        const increment = target / 50;
-        const duration = 2500;
-        const startTime = Date.now();
-
-        const count = () => {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          current = Math.floor(target * progress);
-          
-          entry.target.textContent = current;
-
-          if (progress < 1) {
-            requestAnimationFrame(count);
-          } else {
-            entry.target.textContent = target;
-            entry.target.classList.add('counted');
-          }
-        };
-
-        count();
+// Default configuration
+const defaultConfig = {
+  hero_greeting: "Hi, I'm Mohamed.",
+  hero_subtitle: "Building the future, one line of code at a time.",
+  about_title: "About Me",
+  contact_location: "Agadir, Morocco",
+  contact_email: "mohamedaitelkadi@example.com"
+};
+// all the code is written by AI and some parts from me and i modified it to match my website . 
+// Initialize Element SDK
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      // Update hero greeting
+      const heroGreeting = document.getElementById('hero-greeting');
+      if (heroGreeting) {
+        heroGreeting.textContent = config.hero_greeting || defaultConfig.hero_greeting;
       }
-    });
-  }, observerOptions);
 
-  statNumbers.forEach(number => observer.observe(number));
-}
-
-// Navbar active state
-(function initActiveNav() {
-  const nav = document.querySelector('.navbar');
-  if (!nav) return;
-  const links = nav.querySelectorAll('a[href^="#"]');
-
-  const setActive = (id) => {
-    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
-  };
-
-  links.forEach(l => l.classList.remove('active'));
-
-  const io = new IntersectionObserver((entries) => {
-    let best = null;
-    entries.forEach(e => {
-      if (e.isIntersecting && (!best || e.intersectionRatio > best.ratio)) {
-        best = { id: e.target.id, ratio: e.intersectionRatio };
+      // Update hero subtitle
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) {
+        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
       }
-    });
-    if (best) setActive(best.id);
-  }, { threshold: [0.4, 0.6, 0.8], rootMargin: '0px 0px -30% 0px' });
 
-  links.forEach(link => {
-    const id = link.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if (el) io.observe(el);
+      // Update about title
+      const aboutTitle = document.getElementById('about-title');
+      if (aboutTitle) {
+        aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+      }
 
-    link.addEventListener('click', () => setActive(id));
+      // Update contact location
+      const contactLocation = document.getElementById('contact-location');
+      if (contactLocation) {
+        contactLocation.textContent = config.contact_location || defaultConfig.contact_location;
+      }
+
+      // Update contact email
+      const contactEmail = document.getElementById('contact-email');
+      if (contactEmail) {
+        contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      }
+    },
+    mapToCapabilities: (config) => ({
+      recolorables: [],
+      borderables: [],
+      fontEditable: undefined,
+      fontSizeable: undefined
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['hero_greeting', config.hero_greeting || defaultConfig.hero_greeting],
+      ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+      ['about_title', config.about_title || defaultConfig.about_title],
+      ['contact_location', config.contact_location || defaultConfig.contact_location],
+      ['contact_email', config.contact_email || defaultConfig.contact_email]
+    ])
   });
-})();
+}
 
+// Set current year
+document.getElementById('year').textContent = new Date().getFullYear();
 
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const closeMenuBtn = document.getElementById('close-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
 
-// Typewriter implementation for cross-browser support
-function initTypewriter() {
-  const target = document.querySelector('.type-target');
-  if (!target) return;
+function openMobileMenu() {
+  mobileMenu.classList.add('open');
+  mobileMenuBackdrop.classList.add('open');
+  mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  closeMenuBtn.focus();
+}
 
-  let words = [];
-  try {
-    const data = target.getAttribute('data-words');
-    if (data) words = JSON.parse(data);
-  } catch (e) {}
-  if (!Array.isArray(words) || words.length === 0) {
-    words = ['Web Developer.', 'Student.', 'Competitive Programmer.'];
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  mobileMenuBackdrop.classList.remove('open');
+  mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  mobileMenuBtn.focus();
+}
+
+mobileMenuBtn.addEventListener('click', openMobileMenu);
+closeMenuBtn.addEventListener('click', closeMobileMenu);
+mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+// Close menu when clicking a link
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close menu with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    closeMobileMenu();
   }
+});
 
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) {
-    target.textContent = words[0];
-    target.style.borderRight = 'none';
+// Typewriter effect
+const typewriterElement = document.getElementById('typewriter');
+const words = ['Competitive Programmer.', 'Developer.', 'Math Student.', 'AI Enthusiast.', 'Problem Solver.'];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typewriterTimeout;
+
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function typewriter() {
+  if (prefersReducedMotion) {
+    typewriterElement.textContent = words[0];
     return;
   }
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let state = 'typing'; // 'typing', 'holding', 'deleting', 'pausing'
-  let lastUpdate = 0;
-  let caretVisible = true;
-  let lastBlink = 0;
-  const typeDelay = 90;
-  const deleteDelay = 60;
-  const holdDelay = 1100;
-  const pauseDelay = 300;
-  const blinkDelay = 500;
+  const currentWord = words[wordIndex];
 
-  // Add caret style
-  target.style.borderRight = '2px solid var(--main-color)';
-  target.style.paddingRight = '2px';
+  if (isDeleting) {
+    typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+    charIndex++;
+  }
 
-  const animate = (timestamp) => {
-    if (lastUpdate === 0) lastUpdate = timestamp;
+  let delay = isDeleting ? 50 : 100;
 
-    const delta = timestamp - lastUpdate;
-    const blinkDelta = timestamp - lastBlink;
+  if (!isDeleting && charIndex === currentWord.length) {
+    delay = 2000; // Pause at end
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    delay = 500; // Pause before new word
+  }
 
-    // Handle caret blinking
-    if (blinkDelta >= blinkDelay) {
-      caretVisible = !caretVisible;
-      target.style.borderRightColor = caretVisible ? 'var(--main-color)' : 'transparent';
-      lastBlink = timestamp;
-    }
-
-    const current = words[wordIndex];
-
-    if (state === 'typing') {
-      if (delta >= typeDelay) {
-        charIndex = Math.min(charIndex + 1, current.length);
-        target.textContent = current.slice(0, charIndex);
-        lastUpdate = timestamp;
-        if (charIndex === current.length) {
-          state = 'holding';
-          lastUpdate = timestamp;
-        }
-      }
-    } else if (state === 'holding') {
-      if (delta >= holdDelay) {
-        state = 'deleting';
-        lastUpdate = timestamp;
-      }
-    } else if (state === 'deleting') {
-      if (delta >= deleteDelay) {
-        charIndex = Math.max(charIndex - 1, 0);
-        target.textContent = current.slice(0, charIndex);
-        lastUpdate = timestamp;
-        if (charIndex === 0) {
-          state = 'pausing';
-          lastUpdate = timestamp;
-        }
-      }
-    } else if (state === 'pausing') {
-      if (delta >= pauseDelay) {
-        state = 'typing';
-        wordIndex = (wordIndex + 1) % words.length;
-        lastUpdate = timestamp;
-      }
-    }
-
-    requestAnimationFrame(animate);
-  };
-
-  // Start
-  target.textContent = '';
-  requestAnimationFrame(animate);
+  typewriterTimeout = setTimeout(typewriter, delay);
 }
 
-// Scroll animations
-function initScrollAnimations() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+typewriter();
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('animate')) {
-        entry.target.classList.add('animate');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+// Scroll animations with IntersectionObserver
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
 
-  document.querySelectorAll('.Home-content, .about-content, .projects-grid, .skills-grid, .Education .heading, .timeline-items').forEach(el => observer.observe(el));
-}
-
-// Accordion for education
-function initializeAccordion() {
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const item = header.parentElement;
-      const isActive = item.classList.contains('active');
-
-      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-      if (!isActive) item.classList.add('active');
-    });
+const animationObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
   });
-}
+}, observerOptions);
 
-// Initialize everything
-function init() {
-  startCountingAnimation();
-  initTypewriter();
-  initScrollAnimations();
-  initTimelineScroll();
-  initializeAccordion();
-}
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+  if (!prefersReducedMotion) {
+    animationObserver.observe(el);
+  } else {
+    el.classList.add('visible');
+  }
+});
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
-
-// Copy code functionality for code showcase
-function copyCode() {
-  const codeElement = document.querySelector('.code-display code');
-  if (!codeElement) return;
-
-  const textToCopy = codeElement.textContent || codeElement.innerText;
-
-  navigator.clipboard.writeText(textToCopy).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    if (btn) {
-      const originalText = btn.textContent;
-      btn.textContent = 'Copied!';
-      btn.style.background = 'var(--highlight-color)';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = 'var(--main-color)';
-      }, 2000);
+// Stats counter animation
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = parseInt(entry.target.getAttribute('data-target'));
+      animateCounter(entry.target, target);
+      statsObserver.unobserve(entry.target);
     }
-  }).catch(err => {
-    console.error('Failed to copy: ', err);
-    // Fallback for older browsers
-    const textArea = document.createElement('textarea');
-    textArea.value = textToCopy;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      const btn = document.querySelector('.copy-btn');
-      if (btn) {
-        const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.style.background = 'var(--highlight-color)';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = 'var(--main-color)';
-        }, 2000);
-      }
-    } catch (fallbackErr) {
-      console.error('Fallback copy failed: ', fallbackErr);
-    }
-    document.body.removeChild(textArea);
   });
+}, { threshold: 0.5 });
+
+function animateCounter(element, target) {
+  if (prefersReducedMotion) {
+    element.textContent = target;
+    return;
+  }
+
+  let current = 0;
+  const increment = target / 50;
+  const duration = 1500;
+  const stepTime = duration / 50;
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target;
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(current);
+    }
+  }, stepTime);
 }
+
+document.querySelectorAll('.stat-number').forEach(stat => {
+  statsObserver.observe(stat);
+});
+
+// Active nav link highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px' });
+
+sections.forEach(section => {
+  navObserver.observe(section);
+});
+
+(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c0ec477a3bfb283',t:'MTc2ODkxNDE1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
