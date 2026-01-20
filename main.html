@@ -1,309 +1,1438 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="walnut">
+<!doctype html>
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MOHAMED.AIT</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <meta
+      name="description"
+      content="Portfolio of Mohamed AIT ELKADI - 15-year-old developer passionate about programming, AI, and mathematics"
+    />
+    <title> Mohamed AIT ELKADI SM</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"/>
-    <script src="index.js" defer></script>
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   </head>
-  
-  <body>
-    <!-- This section is for navbar : home , eduction , about and ect .. -->
-    <header class="header">
-      <a href="#Home" class="logo">WWM2010</a>
-
-      <nav class="navbar">
-        <a href="#Home" class="active">Home</a>
-        <a href="#Education">Education</a>
-        <a href="#About">About</a>
-        <a href="#Projects">Projects</a>
-        <a href="#Contact">Contact</a>
-
+  <body class="h-full overflow-auto">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Navigation -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-lg"
+      style="background: rgba(10, 10, 15, 0.9)"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <a
+          href="#home"
+          class="text-xl font-bold gradient-text"
+          aria-label="WWM2010 - Go to home"
+        >
+          WWM2010
+        </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center gap-8" role="menubar">
+          <li role="none">
+            <a href="#home" class="nav-link active" role="menuitem">Home</a>
+          </li>
+          <li role="none">
+            <a href="#education" class="nav-link" role="menuitem">Education</a>
+          </li>
+          <li role="none">
+            <a href="#about" class="nav-link" role="menuitem">About</a>
+          </li>
+          <li role="none">
+            <a href="#projects" class="nav-link" role="menuitem">Projects</a>
+          </li>
+          <li role="none">
+            <a href="#certificates" class="nav-link" role="menuitem"
+              >Certificates</a
+            >
+          </li>
+          <li role="none">
+            <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden p-2 text-white"
+          id="mobile-menu-btn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+        </button>
       </nav>
-      <span class="scroll-down"></span>
+      <!-- Mobile Menu Backdrop -->
+      <div
+        id="mobile-menu-backdrop"
+        class="mobile-menu-backdrop md:hidden"
+      ></div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu fixed inset-y-0 right-0 w-64 p-6 md:hidden z-50"
+        role="dialog"
+        aria-label="Mobile menu"
+      >
+        <button
+          class="absolute top-4 right-4 p-2 text-white"
+          id="close-menu-btn"
+          aria-label="Close menu"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewbox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <ul class="mt-12 space-y-6" role="menu">
+          <li role="none">
+            <a href="#home" class="block text-lg nav-link" role="menuitem"
+              >Home</a
+            >
+          </li>
+          <li role="none">
+            <a href="#education" class="block text-lg nav-link" role="menuitem"
+              >Education</a
+            >
+          </li>
+          <li role="none">
+            <a href="#about" class="block text-lg nav-link" role="menuitem"
+              >About</a
+            >
+          </li>
+          <li role="none">
+            <a href="#projects" class="block text-lg nav-link" role="menuitem"
+              >Projects</a
+            >
+          </li>
+          <li role="none">
+            <a
+              href="#certificates"
+              class="block text-lg nav-link"
+              role="menuitem"
+              >Certificates</a
+            >
+          </li>
+          <li role="none">
+            <a href="#contact" class="block text-lg nav-link" role="menuitem"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
     </header>
-    <div class="circle"></div>
-    
-    <!-- This section is for Home -->
-    <section class="Home" id="Home">
-      <div class="Home-content">
-        <h1>Hi, I'm <span>Mohamed</span>.</h1>
-        <h3 class="text-animation">I'm a <span class="type-target" aria-live="polite" data-words='[ "Competitive Programmer.","Developer."," Math Student."]'></span></h3>
-        <p>
-          I'm Mohamed AIT ELKADI, a 15-year-old programmer<br>with a strong interest in
-          artificial intelligence and engineering.
-        </p>
-
-        <!-- my personal Card -->
-        <div class="achievement-card">
-          <div class="achievement-icon">
-            ✨
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="hero-bg grid-pattern min-h-screen flex items-center relative overflow-hidden pt-20"
+      >
+        <!-- Floating particles -->
+        <div
+          class="particle"
+          style="
+            width: 6px;
+            height: 6px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+          "
+        ></div>
+        <div
+          class="particle"
+          style="
+            width: 4px;
+            height: 4px;
+            top: 60%;
+            left: 20%;
+            animation-delay: 2s;
+          "
+        ></div>
+        <div
+          class="particle"
+          style="
+            width: 8px;
+            height: 8px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+          "
+        ></div>
+        <div
+          class="particle"
+          style="
+            width: 5px;
+            height: 5px;
+            top: 70%;
+            right: 25%;
+            animation-delay: 6s;
+          "
+        ></div>
+        <div
+          class="particle"
+          style="
+            width: 3px;
+            height: 3px;
+            top: 45%;
+            left: 50%;
+            animation-delay: 8s;
+          "
+        ></div>
+        <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in">
+              <p class="text-sm font-mono text-amber-400 mb-4 tracking-wider">
+                // WELCOME TO MY PORTFOLIO
+              </p>
+              <h1
+                id="hero-greeting"
+                class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-primary"
+              >
+                Hi, I'm Mohamed.
+              </h1>
+              <div
+                class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 h-12"
+              >
+                <span class="gradient-text" id="typewriter"></span>
+                <span class="typewriter-cursor" aria-hidden="true"></span>
+              </div>
+              <p
+                id="hero-subtitle"
+                class="text-lg md:text-xl mb-8 text-secondary"
+              >
+                Building the future, one line of code at a time.
+              </p>
+              <!-- Social Icons -->
+              <div
+                class="flex gap-3 mb-8"
+                role="list"
+                aria-label="Social media links"
+              >
+                <a
+                  href="https://github.com/WWM2010"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="GitHub Profile"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    /></svg
+                ></a>
+                <a
+                  href="https://wa.me/0608605072"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="WhatsApp"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                    /></svg
+                ></a>
+                <a
+                  href="https://discordapp.com/users/1338934846587666515"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="Discord"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+                    /></svg
+                ></a>
+                <a
+                  href="mailto:maitelkadi74@gmail.com"
+                  class="social-icon"
+                  aria-label="Email"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" /></svg
+                ></a>
+              </div>
+              <!-- CTA Buttons -->
+              <div class="flex flex-wrap gap-4">
+                <a
+                  href="#about"
+                  class="btn-primary px-8 py-3 rounded-lg inline-block"
+                >
+                  Learn More
+                </a>
+                <a
+                  href="#contact"
+                  class="btn-secondary px-8 py-3 rounded-lg inline-block"
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </div>
+            <!-- Achievement Card -->
+            <div class="fade-in-right">
+              <div class="glass-card rounded-2xl p-8">
+                <div class="flex items-center gap-4 mb-6">
+                  <div
+                    class="w-16 h-16 rounded-full flex items-center justify-center text-3xl gradient-gold"
+                  >
+                    🚀
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold">15-Year-Old Developer</h3>
+                    <p class="text-sm text-secondary">
+                      Passionate about technology
+                    </p>
+                  </div>
+                </div>
+                <blockquote
+                  class="text-lg italic mb-6 text-secondary"
+                  style="
+                    border-left: 3px solid var(--accent-primary);
+                    padding-left: 16px;
+                  "
+                >
+                  "The only way to do great work is to love what you do. I'm
+                  fascinated by the endless possibilities of code and its power
+                  to change the world."
+                </blockquote>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-tag px-3 py-1 rounded-full text-sm"
+                    >Programming</span
+                  >
+                  <span class="skill-tag px-3 py-1 rounded-full text-sm"
+                    >AI</span
+                  >
+                  <span class="skill-tag px-3 py-1 rounded-full text-sm"
+                    >Mathematics</span
+                  >
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="achievement-content">
-            <h4>"I am a person who judge a book from it's cover"</h4>
-            <p>-Mohamed AIT ELKADI-</p>
+          <!-- Scroll Indicator -->
+          <div
+            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block"
+          >
+            <a
+              href="#education"
+              aria-label="Scroll to Education section"
+              class="block"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="accent-primary"
+                aria-hidden="true"
+              >
+                <path d="M12 5v14M5 12l7 7 7-7" /></svg
+            ></a>
           </div>
         </div>
-      </div>
-
-      <!-- Social Icons Section -->
-      <div class="social-section">
-        <h4 class="social-label">Connect with me</h4>
-        <div class="social-icons">
-          <a href="https://github.com/WWM2010" title="GitHub"><i class="bx bxl-github"></i></a>
-          <a href="https://wa.me/0608605072" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
-          <a href="https://discordapp.com/users/1338934846587666515" title="Discord"><i class="bx bxl-discord"></i></a>
-          <a href="mailto:maitelkadi74@gmail.com" title="Gmail"><i class="bx bxl-gmail"></i></a>
-        </div>
-      </div>
-
-      <!-- this Section is for About me and cantact me btn-->
-      <div class="cta-section">
-        <h4 class="cta-label">Let's work together</h4>
-        <div class="btn-group">
-          <a href="#About" class="btn btn-primary">About Me</a>
-          <a href="#Contact" class="btn btn-secondary">Contact Me</a>
-        </div>
-      </div>
-    </section>
-
- <!-- this section is for Education -->
-    <section class="Education" id="Education">
-      <div>
-        <h2 class="heading">Education</h2>
-        <div class="timeline-items">
-          <!-- HIGH SCHOOL-->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-              <div class="timeline-date">2024-2027</div>
-              <div class="timeline-content">
-                <h3>High School</h3>
-                <p>
-                  I am currently a student at Ajdir High School in Agadir.<br />
-                  In 2024, I began self-learning C++ and, with guidance from my computer science teacher, built a strong foundation in programming.
+      </section>
+      <!-- Education Section -->
+      <section id="education" class="py-20 bg-secondary">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-mono text-amber-400 mb-2 tracking-wider">
+              // MY JOURNEY
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold gradient-text">
+              Education &amp; Goals
+            </h2>
+          </div>
+          <div class="relative pl-12 max-w-2xl mx-auto">
+            <div class="timeline-line" aria-hidden="true"></div>
+            <!-- Timeline Item 1 -->
+            <article
+              class="timeline-item relative pb-12 fade-in-left"
+              style="transition-delay: 0.1s"
+            >
+              <div
+                class="timeline-dot"
+                style="top: 4px"
+                aria-hidden="true"
+              ></div>
+              <div class="glass-card rounded-xl p-6 ml-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-mono text-amber-400"
+                    >2024 - 2027</span
+                  >
+                  <span class="text-xs px-3 py-1 rounded-full badge-success"
+                    >Current</span
+                  >
+                </div>
+                <h3 class="text-xl font-semibold mb-2">High School</h3>
+                <p class="text-secondary">
+                  Currently pursuing my high school education with a focus on
+                  mathematics and science (because I'm a 1BAC-SMF student). Building a strong foundation for my
+                  future in technology.
                 </p>
               </div>
-          </div>
-          <!-- UNIVERSITY-->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-              <div class="timeline-date">20??</div>
-              <div class="timeline-content">
-                <h3>University</h3>
-                <p>Planned for the future.</p>
+            </article>
+            <!-- Timeline Item 2 -->
+            <article
+              class="timeline-item relative pb-12 fade-in-left"
+              style="transition-delay: 0.2s"
+            >
+              <div
+                class="timeline-dot"
+                style="top: 4px"
+                aria-hidden="true"
+              ></div>
+              <div class="glass-card rounded-xl p-6 ml-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-mono text-amber-400">2027+</span>
+                  <span class="text-xs px-3 py-1 rounded-full badge-info"
+                    >Planned</span
+                  >
+                </div>
+                <h3 class="text-xl font-semibold mb-2">University</h3>
+                <p class="text-secondary">
+                  Planned for future ...
+                </p>
               </div>
-          </div>
-          <!-- INTERNSHIP-->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-              <div class="timeline-date">20??</div>
-              <div class="timeline-content">
-                <h3>Internship</h3>
-                <p>Planned for the future.</p>
+            </article>
+            <!-- Timeline Item 3 -->
+            <article
+              class="timeline-item relative pb-12 fade-in-left"
+              style="transition-delay: 0.3s"
+            >
+              <div
+                class="timeline-dot"
+                style="top: 4px"
+                aria-hidden="true"
+              ></div>
+              <div class="glass-card rounded-xl p-6 ml-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-mono text-amber-400">Future</span>
+                  <span
+                    class="text-xs px-3 py-1 rounded-full"
+                    style="background: rgba(168, 85, 247, 0.2); color: #a855f7"
+                    >Goal</span
+                  >
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Internship</h3>
+                <p style="color: var(--text-secondary)">
+                  Planned for the future ...
+                </p>
               </div>
-          </div>
-          <!-- JOB -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-              <div class="timeline-date">20??</div>
-              <div class="timeline-content">
-                <h3>Career</h3>
-                <p>Planned for the future.</p>
+            </article>
+            <!-- Timeline Item 4 -->
+            <article
+              class="timeline-item relative fade-in-left"
+              style="transition-delay: 0.4s"
+            >
+              <div
+                class="timeline-dot"
+                style="top: 4px"
+                aria-hidden="true"
+              ></div>
+              <div class="glass-card rounded-xl p-6 ml-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-mono text-amber-400">Dream</span>
+                  <span
+                    class="text-xs px-3 py-1 rounded-full"
+                    style="background: rgba(251, 191, 36, 0.2); color: #fbbf24"
+                    >Vision</span
+                  >
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Career</h3>
+                <p style="color: var(--text-secondary)">
+                  planned for the future ...
+                </p>
               </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- this section is for ABOUT ME -->
-    <section class="About" id="About">
-      <h1 class="heading-About-me">About Me.</h1>
-      <div class="about-content">
-        <div class="about-text">
-          <p>
-            As a dedicated student in Morocco's rigorous 1ère Bac Sciences Mathématiques program, I have cultivated a Good foundation in mathematics and analytical thinking. My passion for programming ignited in 2023 when I began self-learning C++, leading me to explore various programming languages and technologies. I thrive on solving complex problems and continuously seek to enhance my skills through competitive programming and personal projects. My goal is to leverage my technical expertise and dedication to contribute meaningfully to the field of computer science and artificial intelligence.
-          </p>
-          <div class="about-stats">
-            <div class="stat-item">
-              <h3 class="stat-number" data-target="3">0</h3>
-              <p class="stat-label">Programming Languages</p>
+      </section>
+      <!-- About Section -->
+      <section id="about" class="py-20 hero-bg grid-pattern">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-mono text-amber-400 mb-2 tracking-wider">
+              // WHO AM I
+            </p>
+            <h2
+              id="about-title"
+              class="text-3xl md:text-4xl font-bold gradient-text"
+            >
+              About Me
+            </h2>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-left">
+              <p class="text-lg mb-6 text-secondary">
+                I'm <strong class="text-primary">Mohamed AIT ELKADI</strong>, a
+                15-year-old student from Morocco with an insatiable curiosity
+                for technology and mathematics. My journey into programming
+                began when I discovered the magic of turning ideas into reality
+                through code in 2023(the year i bought the PC ).
+              </p>
+              <p class="text-lg mb-6 text-secondary">
+                I'm particularly fascinated by
+                <strong class="accent-primary">Artificial Intelligence</strong>
+                and its potential to solve complex problems. Every day, I
+                dedicate time to learning new programming concepts, solving
+                algorithmic challenges(Math), and building projects that push my
+                boundaries.
+              </p>
+              <p class="text-lg text-secondary">
+                When I'm not coding, you'll find me exploring mathematical
+                concepts, participating in competitive programming, or studying for school exams. 
+              </p>
             </div>
-            <div class="stat-item">
-              <h3 class="stat-number" data-target="5">0</h3>
-              <p class="stat-label">Projects</p>
+            <div class="fade-in-right">
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="glass-card rounded-xl p-6 text-center">
+                  <div class="stat-number gradient-text" data-target="3">0</div>
+                  <p class="text-sm mt-2 text-secondary">Languages</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center">
+                  <div class="stat-number gradient-text" data-target="5">0</div>
+                  <p class="text-sm mt-2 text-secondary">Projects</p>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center">
+                  <div class="stat-number gradient-text" data-target="100">
+                    0
+                  </div>
+                  <p class="text-sm mt-2 text-secondary">% Dedication</p>
+                </div>
+              </div>
+              <!-- Skills -->
+              <div class="glass-card rounded-xl p-6">
+                <h3 class="text-lg font-semibold mb-4">Technical Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">C++</span>
+                    <span class="text-xs ml-2 opacity-70">Intermediate</span>
+                  </span>
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">Python</span>
+                    <span class="text-xs ml-2 opacity-70">Beginner</span>
+                  </span>
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">HTML/CSS</span>
+                    <span class="text-xs ml-2 opacity-70">Intermediate</span>
+                  </span>
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">Promting Skills</span>
+                    <span class="text-xs ml-2 opacity-70">Strong</span>
+                  </span>
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">Git</span>
+                    <span class="text-xs ml-2 opacity-70">Beginner</span>
+                  </span>
+                  <span class="skill-tag px-4 py-2 rounded-lg">
+                    <span class="font-semibold">Problem Solving</span>
+                    <span class="text-xs ml-2 opacity-70">Strong</span>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="stat-item">
-              <h3 class="stat-number" data-target="100">0</h3>
-              <p class="stat-suffix">%</p>
-              <p class="stat-label">Dedication</p>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Section -->
+      <section id="projects" class="py-20 bg-secondary">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-mono text-amber-400 mb-2 tracking-wider">
+              // MY WORK
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold gradient-text">
+              Featured Projects
+            </h2>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in"
+              style="transition-delay: 0.1s"
+            >
+              <div
+                class="h-40 flex items-center justify-center text-6xl gradient-gold-light"
+              >
+                🌐
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-semibold">Portfolio Website</h3>
+                  <span class="text-xs text-secondary">2025</span>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  My personal portfolio website showcasing my projects, skills,
+                  and journey as a young developer.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">JavaScript</span>
+                </div>
+                <a
+                  href="https://github.com/WWM2010/Portfolio-website-2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View on GitHub
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </div>
+            </article>
+            <!-- Project 2 -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in"
+              style="transition-delay: 0.2s"
+            >
+              <div
+                class="h-40 flex items-center justify-center text-6xl gradient-blue-purple"
+              >
+                🎮
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-semibold">Tic-Tac-Toe Game</h3>
+                  <span class="text-xs text-secondary">2025</span>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  A classic Tic-Tac-Toe game implemented in C++ with a simple AI
+                  opponent using the minimax algorithm.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-badge">C++</span>
+                  <span class="tech-badge">Algorithms</span>
+                </div>
+                <a
+                  href="https://github.com/WWM2010/Tic-tac-toe-game-"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View on GitHub
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </div>
+            </article>
+            <!-- Project 3 -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in"
+              style="transition-delay: 0.3s"
+            >
+              <div
+                class="h-40 flex items-center justify-center text-6xl gradient-green"
+              >
+                🔢
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-semibold">Python-graph-function</h3>
+                  <span class="text-xs text-secondary">2026</span>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  A graph math function maker for math teachers 
+                  who want to visualize their math function in their Exercices. 
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-badge">C++</span>
+                  <span class="tech-badge">Math</span>
+                </div>
+                <a
+                  href="https://github.com/WWM2010/Python-graph-function."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View on GitHub
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </div>
+            </article>
+            <!-- Project 4 -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in"
+              style="transition-delay: 0.4s"
+            >
+              <div
+                class="h-40 flex items-center justify-center text-6xl gradient-yellow"
+              >
+                🌹
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-semibold">ROSE</h3>
+                  <span class="text-xs text-secondary">2026</span>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                 A graph code that create a rose or a flower using mathematical function like
+                 sin, cos and the cst "pi".
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-badge">Python</span>
+                  <span class="tech-badge">CLI</span>
+                </div>
+                <a
+                  href="https://github.com/WWM2010/ROSE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View on GitHub
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </div>
+            </article>
+            <!-- Project 5 -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in"
+              style="transition-delay: 0.5s"
+            >
+              <div
+                class="h-40 flex items-center justify-center text-6xl gradient-red-light"
+              >
+                🎯
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-lg font-semibold">School club Website</h3>
+                  <span class="text-xs text-secondary">2026</span>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  A website for my school's club of "نادي التربية على المواطنة و حقوق الإنسان" to share resources,
+                  events, and projects with members.(IN PROGRESS)
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="tech-badge">HTML/CSS</span>
+                  <span class="tech-badge">JavaScript</span>
+                </div>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View on GitHub
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </div>
+            </article>
+            <!-- More Projects Card -->
+            <article
+              class="glass-card rounded-xl overflow-hidden fade-in flex items-center justify-center"
+              style="transition-delay: 0.6s; min-height: 320px"
+            >
+              <div class="text-center p-6">
+                <div class="text-4xl mb-4">✨</div>
+                <h3 class="text-lg font-semibold mb-2">More Coming Soon</h3>
+                <p class="text-sm text-secondary">
+                  I'm always working on new projects. Stay tuned for more!
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- Certificates & Achievements Section -->
+      <section id="certificates" class="py-20 hero-bg grid-pattern">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-mono text-amber-400 mb-2 tracking-wider">
+              // CREDENTIALS &amp; LEARNING
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold gradient-text">
+              Certificates &amp; Achievements
+            </h2>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Certified Courses Column -->
+            <div class="fade-in-left">
+              <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-3xl">🏆</span> Certified Courses
+              </h3>
+
+              <!-- CS50 Certificate -->
+              <article class="glass-card rounded-xl p-6 mb-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div
+                    class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl gradient-red"
+                  >
+                    🎓
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-lg font-semibold mb-1">
+                      CS50's Introduction to Computer Science
+                    </h4>
+                    <p class="text-sm mb-2 accent-primary">
+                      Harvard University
+                    </p>
+                    <span class="tech-badge">Computer Science</span>
+                  </div>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  Completed Harvard's legendary CS50 course, covering
+                  fundamental computer science concepts including algorithms,
+                  data structures, memory management, and multiple programming
+                  languages (C, Python, SQL, JavaScript).
+                </p>
+                <a
+                  href="https://cs50.harvard.edu/x/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View Certificate
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </article>
+              <!-- CS50p  Python Certificate -->
+              <article class="glass-card rounded-xl p-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div
+                    class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl gradient-python"
+                  >
+                    🐍
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-lg font-semibold mb-1">
+                      CS50's Introduction to Programming with Python.
+                    </h4>
+                    <p class="text-sm mb-2 accent-primary">
+                      Harvard University
+                    </p>
+                    <span class="tech-badge">Python</span>
+                  </div>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  Gained proficiency in Python programming through Harvard's
+                  CS50P course, learning about data structures, web
+                  development, and software engineering principles using Python
+                  and its frameworks.
+                </p>
+                
+                
+                <!-- Certificate Link (delete from /certificate/) -->
+                
+                <a
+                  href="https://cs50.harvard.edu/python/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  View Certificate
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </article>
+            </div>
+            <!-- Non-Certified Courses Column -->
+            <div class="fade-in-right">
+              <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-3xl">📚</span> Non-Certified Courses &amp;
+                Tutorials
+              </h3>
+              <!-- C++ Tutorial -->
+              <article class="glass-card rounded-xl p-6 mb-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div
+                    class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl gradient-cpp"
+                  >
+                    🎮
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-lg font-semibold mb-1">
+                      C++ Development Tutorial (By Bro code)
+                    </h4>
+                    <p class="text-sm mb-2 accent-primary">YouTube Series</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="tech-badge">C++</span>
+                      <span class="tech-badge">Math</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  In-depth C++ programming tutorial series covering basics to
+                  advanced topics, including OOP,  some data structures and algorithms,
+                  and practical coding examples.
+                </p>
+                <a
+                  href="https://www.youtube.com/playlist?list=PLZPZq0r_RZOMHoXIcxze_lP97j2Ase2on"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  Watch Tutorial
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </article>
+              <!-- ML Fundamentals -->
+              <article class="glass-card rounded-xl p-6 mb-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div
+                    class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl gradient-ml"
+                  >
+                    🤖
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-lg font-semibold mb-1">
+                      Machine Learning Fundamentals by 3Blue1Brown
+                    </h4>
+                    <p class="text-sm mb-2 accent-primary">YouTube Playlist</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="tech-badge">ML</span>
+                      <span class="tech-badge">Neural Networks</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  Comprehensive introduction to machine learning concepts,
+                  neural networks, and deep learning principles through engaging
+                  visual explanations and practical examples.
+                </p>
+                <a
+                  href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  Watch Playlist
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </article>
+              <!-- Web Dev -->
+              <article class="glass-card rounded-xl p-6">
+                <div class="flex items-start gap-4 mb-4">
+                  <div
+                    class="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-2xl gradient-web"
+                  >
+                    🌐
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-lg font-semibold mb-1">
+                      Web Development
+                    </h4>
+                    <p class="text-sm mb-2 accent-primary">YouTube Course</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="tech-badge">HTML</span>
+                      <span class="tech-badge">CSS</span>
+                      <span class="tech-badge">JavaScript</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm mb-4 text-secondary">
+                  Comprehensive web development course covering HTML, CSS
+                  to build responsive and interactive
+                  websites from scratch.
+                </p>
+                <a
+                  href="https://www.youtube.com/playlist?list=PLZPZq0r_RZOOxqHgOzPyCzIl4AJjXbCYt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium accent-primary"
+                >
+                  Watch Course
+                  <svg
+                    width="16"
+                    height="16"
+                    viewbox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+                ></a>
+              </article>
             </div>
           </div>
         </div>
-        <div class="about-skills">
-          <h3 class="skills-title">Skills & Technologies</h3>
-          <div class="skills-grid">
-            <div class="skill-tag">Intermediate C++</div>
-            <div class="skill-tag">Beginner Python</div>
-            <div class="skill-tag">Beginner JavaScript</div>
-            <div class="skill-tag"> Intermediate HTML/CSS</div>
-            <div class="skill-tag">Competitive Programming</div>
-            <div class="skill-tag">Math/Algorithms</div>
-            <div class="skill-tag">Prompting skill</div>
+      </section>
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 hero-bg grid-pattern">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-16 fade-in">
+            <p class="text-sm font-mono text-amber-400 mb-2 tracking-wider">
+              // GET IN TOUCH
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold gradient-text">
+              Contact Me
+            </h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="fade-in-left">
+              <h3 class="text-xl font-semibold mb-6">Let's Connect</h3>
+              <p class="mb-8 text-secondary">
+                I'm always excited to connect with fellow developers, students
+                ,or anyone interested in technology. Feel free to
+                reach out!
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style="background: rgba(201, 169, 98, 0.1)"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewbox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="accent-primary"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-secondary">Location</p>
+                    <p id="contact-location" class="font-medium">
+                      Agadir, Morocco
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style="background: rgba(201, 169, 98, 0.1)"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewbox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="accent-primary"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-secondary">Availability</p>
+                    <p class="font-medium">Friday-16:00PM-19:00PM-</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style="background: rgba(201, 169, 98, 0.1)"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewbox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="accent-primary"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-secondary">Email</p>
+                    <p id="contact-email" class="font-medium">
+                      maitelkadi74@gmail.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Find Me Online Section (coded from AI / modified by me )-->
+            <div class="fade-in-right">
+              <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-semibold mb-6">Find Me Online</h3>
+                <div class="grid grid-cols-2 gap-4">
+                  <a
+                    href="https://github.com/WWM2010"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 p-4 rounded-xl transition-all hover:scale-105 bg-tertiary"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewbox="0 0 24 24"
+                      fill="currentColor"
+                      class="text-primary"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      /></svg
+                    ><span class="font-medium">GitHub</span>
+                  </a>
+                  <a
+                    href="https://wa.me/0608605072"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 p-4 rounded-xl transition-all hover:scale-105 bg-tertiary"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewbox="0 0 24 24"
+                      fill="#25D366"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                      /></svg
+                    ><span class="font-medium">WhatsApp</span>
+                  </a>
+                  <a
+                    href="https://discordapp.com/users/1338934846587666515"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 p-4 rounded-xl transition-all hover:scale-105 bg-tertiary"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewbox="0 0 24 24"
+                      fill="#5865F2"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+                      /></svg
+                    ><span class="font-medium">Discord</span>
+                  </a>
+                  <a
+                    href="mailto:maitelkadi74@gmail.com"
+                    class="flex items-center gap-3 p-4 rounded-xl transition-all hover:scale-105 bg-tertiary"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewbox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="email-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" /></svg
+                    ><span class="font-medium">Email</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- this section is for PROJECTS -->
-    <section class="Projects" id="Projects">
-      <h2 class="heading">My Projects</h2>
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">Portfolio Website</h3>
-            <span class="project-date">2025</span>
-          </div>
-          <p class="project-description">
-            Personal portfolio showcasing my skills and projects. Features smooth scrolling, animations, and responsive design.
-          </p>
-          <div class="project-tech">
-            <span class="tech-badge">HTML</span>
-            <span class="tech-badge">CSS</span>
-            <span class="tech-badge">JavaScript</span>
-          </div>
-          <a href="main.html" class="project-link">View Project →</a>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">Tic-tac-toe game in C++</h3>
-            <span class="project-date">2025</span>
-          </div>
-          <p class="project-description">
-            A tic-tac-toe game with an AI opponent featuring three difficulty levels: Easy, Medium, and Hard.
-          </p>
-          <div class="project-tech">
-            <span class="tech-badge">C++</span>
-            <span class="tech-badge">Math/Algorithms</span>
-            <span class="tech-badge">GitHub</span>
-          </div>
-          <a href="code-showcase.html" class="project-link">View Project →</a>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">School Website</h3>
-            <span class="project-date">2026</span>
-          </div>
-          <p class="project-description">
-            Planned project under development.
-          </p>
-          <div class="project-tech">
-            <span class="tech-badge">HTML/CSS</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">GitHub</span>
-          </div>
-          <a href="#" class="project-link">View Project →</a>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">In Progress</h3>
-            <span class="project-date">2026</span>
-          </div>
-          <p class="project-description">
-            Planned project under development.
-          </p>
-          <div class="project-tech">
-            <span class="tech-badge">HTML/CSS</span>
-            <span class="tech-badge">JavaScript</span>
-            <span class="tech-badge">Responsive</span>
-          </div>
-          <a href="#" class="project-link">View Project →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- this section is for CONTACT -->
-    <section class="Contact" id="Contact">
-      <h2 class="heading">Contact Me</h2>
-      <p class="contact-intro">Feel free to reach out through any of these platforms:</p>
-
-      <!-- Social Icons Section -->
-      <div class="social-section">
-        <h4 class="social-label">Connect with me</h4>
-        <div class="social-icons">
-          <a href="https://github.com/WWM2010" title="GitHub"><i class="bx bxl-github"></i></a>
-          <a href="https://wa.me/0608605072" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
-          <a href="https://discordapp.com/users/1338934846587666515" title="Discord"><i class="bx bxl-discord"></i></a>
-          <a href="mailto:maitelkadi74@gmail.com" title="Gmail"><i class="bx bxl-gmail"></i></a>
-        </div>
-      </div>
-
-      <!-- Contact Information -->
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class='bx bx-map'></i>
-          <div class="contact-details">
-            <h4>Location</h4>
-            <p>Agadir, Morocco</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class='bx bx-time-five'></i>
-          <div class="contact-details">
-            <h4>Availability</h4>
-            <p>Friday-16:00PM-19:00PM-</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class='bx bx-envelope'></i>
-          <div class="contact-details">
-            <h4>Email</h4>
-            <p>maitelkadi74@gmail.com</p>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
+      </section>
+    </main>
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <a href="#Home" class="logo">WWM2010</a>
-          <p>Building the future through code and creativity.</p>
+    <footer
+      class="py-12 bg-secondary border-accent"
+      style="border-top-width: 1px"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <a
+              href="#home"
+              class="text-2xl font-bold gradient-text mb-4 inline-block"
+              >WWM2010</a
+            >
+            <p class="text-sm text-secondary">
+              A 15-year-old developer passionate about programming, AI, and
+              mathematics.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Quick Links</h4>
+            <nav aria-label="Footer navigation">
+              <ul class="space-y-2">
+                <li>
+                  <a
+                    href="#home"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#education"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >Education</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#about"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#projects"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >Projects</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#certificates"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >Certificates</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="text-sm hover:text-amber-400 transition-colors text-secondary"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Connect</h4>
+            <div class="flex gap-3" role="list" aria-label="Social media links">
+              <a
+                href="https://github.com/WWM2010"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="GitHub Profile"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  /></svg
+              ></a>
+              <a
+                href="https://wa.me/0608605072"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="WhatsApp"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  /></svg
+              ></a>
+              <a
+                href="https://discordapp.com/users/1338934846587666515"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="Discord"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewbox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+                  /></svg
+              ></a>
+              <a
+                href="mailto:maitelkadi74@gmail.com"
+                class="social-icon"
+                aria-label="Email"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" /></svg
+              ></a>
+            </div>
+          </div>
         </div>
-
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <a href="#Home">Home</a>
-          <a href="#Education">Education</a>
-          <a href="#About">About</a>
-          <a href="#Projects">Projects</a>
-          <a href="#Contact">Contact</a>
+        <div
+          class="pt-8 text-center border-accent"
+          style="border-top-width: 1px"
+        >
+          <p class="text-sm text-secondary">
+            © <span id="year"></span> Mohamed AIT ELKADI. All rights reserved.
+          </p>
         </div>
-
-        <div class="footer-social">
-          <a href="https://github.com/WWM2010" title="GitHub"><i class="bx bxl-github"></i></a>
-          <a href="https://wa.me/0608605072" title="WhatsApp"><i class="bx bxl-whatsapp"></i></a>
-          <a href="https://discordapp.com/users/1338934846587666515" title="Discord"><i class="bx bxl-discord"></i></a>
-          <a href="mailto:maitelkadi74@gmail.com" title="Gmail"><i class="bx bxl-gmail"></i></a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 <span>Mohamed AIT ELKADI</span>. All rights reserved.</p>
       </div>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
