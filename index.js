@@ -1,14 +1,3 @@
-// Default configuration
-const defaultConfig = {
-  hero_greeting: "Hi, I'm Mohamed.",
-  hero_subtitle: "Building the future, one line of code at a time.",
-  about_title: "About Me",
-  contact_location: "Agadir, Morocco",
-  contact_email: "mohamedaitelkadi@example.com"
-};
-// all the code is written by AI and some parts from me and i modified it to match my website . 
-// SDK initialization removed for GitHub Pages compatibility
-
 // Set current year
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -56,7 +45,6 @@ const words = ['Competitive Programmer.', 'Developer.', 'Math Student.', 'AI Ent
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-let typewriterTimeout;
 
 // Check for reduced motion preference
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -88,7 +76,7 @@ function typewriter() {
     delay = 500; // Pause before new word
   }
 
-  typewriterTimeout = setTimeout(typewriter, delay);
+  setTimeout(typewriter, delay);
 }
 
 typewriter();
@@ -174,5 +162,3 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(section => {
   navObserver.observe(section);
 });
-
-(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c0ec477a3bfb283',t:'MTc2ODkxNDE1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
