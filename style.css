@@ -13,6 +13,15 @@ body {
   --accent-secondary: #8b7355;
   --accent-glow: rgba(201, 169, 98, 0.3);
 }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Firefox scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--accent-secondary) var(--bg-secondary); }
+
+/* WebKit scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--accent-secondary); border-radius: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
 
 * {
   scrollbar-width: thin;
