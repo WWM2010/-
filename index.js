@@ -81,28 +81,64 @@ function typewriter() {
 
 typewriter();
 
+// FIXED: Initialize animations only if not reduced motion
+// Add class to body to enable CSS animations
+if (!prefersReducedMotion) {
+  document.body.classList.add('js-animations');
+}
+
 // Scroll animations with IntersectionObserver
 const observerOptions = {
   root: null,
-  rootMargin: '0px',
+  rootMargin: '0px 0px -50px 0px', // Trigger slightly before element is fully visible
   threshold: 0.1
 };
 
 const animationObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      // Add small delay for staggered effect
+      const delay = entry.target.style.transitionDelay || '0s';
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, parseFloat(delay) * 1000);
     }
   });
 }, observerOptions);
 
-document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
-  if (!prefersReducedMotion) {
-    animationObserver.observe(el);
+// Initialize animations
+function initAnimations() {
+  const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+  
+  if (prefersReducedMotion) {
+    // If reduced motion, make everything visible immediately
+    animatedElements.forEach(el => {
+      el.classList.add('visible');
+    });
   } else {
-    el.classList.add('visible');
+    // Observe all animated elements
+    animatedElements.forEach(el => {
+      animationObserver.observe(el);
+    });
+    
+    // IMPORTANT: Trigger initial check for elements already in viewport
+    // This fixes the mobile issue where elements don't animate on page load
+    setTimeout(() => {
+      animatedElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // If element is already in viewport, make it visible
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
   }
-});
+}
+
+// Run initialization
+initAnimations();
 
 // Stats counter animation
 const statsObserver = new IntersectionObserver((entries) => {
