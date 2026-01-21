@@ -41,7 +41,7 @@ document.addEventListener('keydown', (e) => {
 
 // Typewriter effect
 const typewriterElement = document.getElementById('typewriter');
-const words = [' Frontend-Developer', 'Competitive Programmer.', 'Math Student.', 'AI Enthusiast.', 'Problem Solver.'];
+const words = ['Frontend-Developer.', 'Competitive Programmer.', 'Math Student.', 'AI Enthusiast.', 'Problem Solver.'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -198,4 +198,5 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(section => {
   navObserver.observe(section);
 });
+
 
