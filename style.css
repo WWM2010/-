@@ -297,20 +297,32 @@ body {
   line-height: 1;
 }
 
-/* Mobile menu - FIXED: Solid background */
+/* Mobile menu🔥 */
 .mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%; /* Takes up 80% of screen width */
+  max-width: 400px;
+  height: 100vh;
+  z-index: 50; /* Sits above the backdrop */
+
+  /* Background Fixes */
+  background-color: var(--bg-primary, #1a1a1a); /* Added a dark fallback */
+  display: flex;
+  flex-direction: column;
+
   transform: translateX(100%);
   transition: transform 0.3s ease;
-  background: var(--bg-primary);
   border-left: 1px solid rgba(201, 169, 98, 0.2);
-  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-menu.open {
   transform: translateX(0);
 }
 
-/* Mobile menu backdrop */
+/* Backdrop */
 .mobile-menu-backdrop {
   position: fixed;
   inset: 0;
@@ -318,7 +330,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 40;
+  z-index: 40; /* Sits below the menu */
 }
 
 .mobile-menu-backdrop.open {
