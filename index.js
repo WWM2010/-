@@ -1,7 +1,12 @@
-// Set current year
-document.getElementById('year').textContent = new Date().getFullYear();
+/**
+ * UI & Animation Controller
+ */
 
-// Mobile menu functionality
+// 1. Set current year
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// 2. Mobile Menu Logic
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const closeMenuBtn = document.getElementById('close-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -20,43 +25,32 @@ function closeMobileMenu() {
   mobileMenuBackdrop.classList.remove('open');
   mobileMenuBtn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
-  mobileMenuBtn.focus();
 }
 
-mobileMenuBtn.addEventListener('click', openMobileMenu);
-closeMenuBtn.addEventListener('click', closeMobileMenu);
-mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMobileMenu);
+if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
 
-// Close menu when clicking a link
-mobileMenu.querySelectorAll('a').forEach(link => {
+document.querySelectorAll('#mobile-menu a').forEach(link => {
   link.addEventListener('click', closeMobileMenu);
 });
 
-// Close menu with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-    closeMobileMenu();
-  }
-});
-
-// Typewriter effect
+// 3. Typewriter Effect
 const typewriterElement = document.getElementById('typewriter');
 const words = ['Frontend-Developer.', 'Competitive Programmer.', 'Math Student.', 'AI Enthusiast.', 'Problem Solver.'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
-// Check for reduced motion preference
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function typewriter() {
-  if (prefersReducedMotion) {
-    typewriterElement.textContent = words[0];
+  if (prefersReducedMotion || !typewriterElement) {
+    if (typewriterElement) typewriterElement.textContent = words[0];
     return;
   }
 
   const currentWord = words[wordIndex];
-
   if (isDeleting) {
     typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
     charIndex--;
@@ -68,79 +62,67 @@ function typewriter() {
   let delay = isDeleting ? 50 : 100;
 
   if (!isDeleting && charIndex === currentWord.length) {
-    delay = 2000; // Pause at end
+    delay = 2000;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     wordIndex = (wordIndex + 1) % words.length;
-    delay = 500; // Pause before new word
+    delay = 500;
   }
 
   setTimeout(typewriter, delay);
 }
 
-typewriter();
-
-// FIXED: Initialize animations only if not reduced motion
-// Add class to body to enable CSS animations
-if (!prefersReducedMotion) {
-  document.body.classList.add('js-animations');
-}
-
-// Scroll animations with IntersectionObserver
-const observerOptions = {
-  root: null,
-  rootMargin: '0px 0px -50px 0px', // Trigger slightly before element is fully visible
-  threshold: 0.1
-};
-
+// 4. Scroll Animations (The Fixed Part)
 const animationObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Add small delay for staggered effect
-      const delay = entry.target.style.transitionDelay || '0s';
+      // FIX: Get delay from CSS even if not set as inline style
+      const computedStyle = window.getComputedStyle(entry.target);
+      const delayStr = entry.target.style.transitionDelay || computedStyle.transitionDelay;
+      const delay = parseFloat(delayStr) || 0;
+
       setTimeout(() => {
         entry.target.classList.add('visible');
-      }, parseFloat(delay) * 1000);
+      }, delay * 1000);
+      
+      // Stop observing once visible to save mobile battery
+      animationObserver.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, {
+  root: null,
+  rootMargin: '0px 0px -50px 0px',
+  threshold: 0.1
+});
 
-// Initialize animations
 function initAnimations() {
   const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
   
   if (prefersReducedMotion) {
-    // If reduced motion, make everything visible immediately
-    animatedElements.forEach(el => {
-      el.classList.add('visible');
-    });
-  } else {
-    // Observe all animated elements
-    animatedElements.forEach(el => {
-      animationObserver.observe(el);
-    });
-    
-    // IMPORTANT: Trigger initial check for elements already in viewport
-    // This fixes the mobile issue where elements don't animate on page load
-    setTimeout(() => {
-      animatedElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        
-        // If element is already in viewport, make it visible
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          el.classList.add('visible');
-        }
-      });
-    }, 100);
+    animatedElements.forEach(el => el.classList.add('visible'));
+    return;
   }
+
+  // Activate animations via class
+  document.body.classList.add('js-animations');
+
+  animatedElements.forEach(el => {
+    animationObserver.observe(el);
+  });
+
+  // Force-check elements already in view on load
+  window.requestAnimationFrame(() => {
+    animatedElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+  });
 }
 
-// Run initialization
-initAnimations();
-
-// Stats counter animation
+// 5. Stats Counter
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -158,45 +140,47 @@ function animateCounter(element, target) {
   }
 
   let current = 0;
-  const increment = target / 50;
-  const duration = 1500;
-  const stepTime = duration / 50;
+  const duration = 2000; 
+  const start = performance.now();
 
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target;
-      clearInterval(timer);
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Ease out cubic function for smoother finish
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    
+    element.textContent = Math.floor(easeProgress * target);
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
     } else {
-      element.textContent = Math.floor(current);
+      element.textContent = target;
     }
-  }, stepTime);
+  }
+  requestAnimationFrame(update);
 }
 
-document.querySelectorAll('.stat-number').forEach(stat => {
-  statsObserver.observe(stat);
+// 6. Execution
+document.addEventListener('DOMContentLoaded', () => {
+  typewriter();
+  initAnimations();
+  document.querySelectorAll('.stat-number').forEach(stat => statsObserver.observe(stat));
+  
+  // Active Nav Observer
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(section => navObserver.observe(section));
 });
-
-// Active nav link highlighting
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${id}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}, { rootMargin: '-50% 0px -50% 0px' });
-
-sections.forEach(section => {
-  navObserver.observe(section);
-});
-
 
